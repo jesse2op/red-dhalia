@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-cafe-dark-brown;
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+}
+
+@layer utilities {
+  .print-hidden {
+    @apply print:hidden;
+  }
+  
+  .print-visible {
+    @apply hidden print:block;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@media print {
+  @page {
+    margin: 1cm;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .print-hidden {
+    display: none !important;
+  }
+}
+
