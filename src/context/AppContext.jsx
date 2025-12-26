@@ -27,6 +27,10 @@ const defaultMenuItems = [
 ];
 
 export const AppProvider = ({ children }) => {
+  const [user, setUser] = useState(() => {
+    return getFromStorage('user', null);
+  });
+
   const [menuItems, setMenuItems] = useState(() => {
     const stored = getFromStorage('menuItems');
     return stored && stored.length > 0 ? stored : defaultMenuItems;
@@ -73,6 +77,15 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     saveToStorage('transactions', transactions);
   }, [transactions]);
+
+  // Sync user to localStorage
+  useEffect(() => {
+    if (user) {
+      saveToStorage('user', user);
+    } else {
+      localStorage.removeItem('user');
+    }
+  }, [user]);
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
@@ -144,7 +157,19 @@ export const AppProvider = ({ children }) => {
     showToast('Transaction saved successfully!', 'success');
   };
 
+  const login = (role) => {
+    setUser({ role, loginTime: new Date().toISOString() });
+    showToast(`Logged in as ${role === 'owner' ? 'Owner' : 'Employee'}`, 'success');
+  };
+
+  const logout = () => {
+    setUser(null);
+    setCart([]); // Clear cart on logout
+    showToast('Logged out successfully', 'success');
+  };
+
   const value = {
+    user,
     menuItems,
     cart,
     taxSettings,
@@ -160,6 +185,8 @@ export const AppProvider = ({ children }) => {
     setTaxSettings,
     addTransaction,
     showToast,
+    login,
+    logout,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

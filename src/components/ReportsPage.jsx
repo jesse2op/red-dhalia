@@ -16,7 +16,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-const COLORS = ['#E31837', '#C41E3A', '#FFB6C1', '#8B0000', '#DC143C'];
+const COLORS = ['#D32F2F', '#B71C1C', '#F44336', '#C62828', '#D50000']; // Subtle red accent colors
 
 const ReportsPage = () => {
   const { transactions } = useApp();
@@ -159,7 +159,7 @@ const ReportsPage = () => {
   return (
     <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 gap-3 sm:gap-0">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cafe-brown">Reports & Analytics</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-dark-text-primary">Reports & Analytics</h1>
         <div className="flex gap-2">
           {['daily', 'weekly', 'monthly'].map((p) => (
             <button
@@ -168,7 +168,7 @@ const ReportsPage = () => {
               className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-200 text-xs sm:text-sm md:text-base capitalize ${
                 period === p
                   ? 'bg-cafe-brown text-white font-semibold'
-                  : 'bg-white text-cafe-dark-brown border-2 border-cafe-brown hover:bg-red-50'
+                  : 'bg-dark-surface text-dark-text-secondary border border-cafe-brown hover:bg-dark-surface-elevated hover:text-dark-text-primary'
               }`}
             >
               {p}
@@ -178,23 +178,23 @@ const ReportsPage = () => {
       </div>
 
       {filteredTransactions.length === 0 ? (
-        <div className="text-center py-12 bg-white rounded-lg shadow-md">
-          <p className="text-lg sm:text-xl text-gray-500">No transactions found for the selected period.</p>
+        <div className="text-center py-12 bg-dark-surface border border-dark-border rounded-lg">
+          <p className="text-lg sm:text-xl text-dark-text-secondary">No transactions found for the selected period.</p>
         </div>
       ) : (
         <>
           {/* Summary Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6">
-            <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
-              <h3 className="text-sm sm:text-base text-gray-600 mb-2">Total Revenue</h3>
+            <div className="bg-dark-surface border border-dark-border rounded-lg p-4 sm:p-6">
+              <h3 className="text-sm sm:text-base text-dark-text-secondary mb-2">Total Revenue</h3>
               <p className="text-2xl sm:text-3xl font-bold text-cafe-brown">₹{summary.total.toFixed(2)}</p>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
-              <h3 className="text-sm sm:text-base text-gray-600 mb-2">Total Transactions</h3>
-              <p className="text-2xl sm:text-3xl font-bold text-cafe-dark-brown">{summary.count}</p>
+            <div className="bg-dark-surface border border-dark-border rounded-lg p-4 sm:p-6">
+              <h3 className="text-sm sm:text-base text-dark-text-secondary mb-2">Total Transactions</h3>
+              <p className="text-2xl sm:text-3xl font-bold text-dark-text-primary">{summary.count}</p>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
-              <h3 className="text-sm sm:text-base text-gray-600 mb-2">Average Order Value</h3>
+            <div className="bg-dark-surface border border-dark-border rounded-lg p-4 sm:p-6">
+              <h3 className="text-sm sm:text-base text-dark-text-secondary mb-2">Average Order Value</h3>
               <p className="text-2xl sm:text-3xl font-bold text-cafe-brown">₹{summary.average.toFixed(2)}</p>
             </div>
           </div>
@@ -202,8 +202,8 @@ const ReportsPage = () => {
           {/* Charts Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
             {/* Sales Over Time Chart */}
-            <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-bold text-cafe-brown mb-4">
+            <div className="bg-dark-surface border border-dark-border rounded-lg p-4 sm:p-6">
+              <h3 className="text-lg sm:text-xl font-bold text-dark-text-primary mb-4">
                 Sales Over Time
               </h3>
               <ResponsiveContainer width="100%" height={300}>
@@ -236,8 +236,8 @@ const ReportsPage = () => {
             </div>
 
             {/* Category Distribution */}
-            <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-bold text-cafe-brown mb-4">
+            <div className="bg-dark-surface border border-dark-border rounded-lg p-4 sm:p-6">
+              <h3 className="text-lg sm:text-xl font-bold text-dark-text-primary mb-4">
                 Sales by Category
               </h3>
               <ResponsiveContainer width="100%" height={300}>
@@ -263,8 +263,8 @@ const ReportsPage = () => {
           </div>
 
           {/* Top Items Chart */}
-          <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6">
-            <h3 className="text-lg sm:text-xl font-bold text-cafe-brown mb-4">Top 5 Items</h3>
+          <div className="bg-dark-surface border border-dark-border rounded-lg p-4 sm:p-6 mb-6">
+            <h3 className="text-lg sm:text-xl font-bold text-dark-text-primary mb-4">Top 5 Items</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={topItemsData} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" />
@@ -278,8 +278,8 @@ const ReportsPage = () => {
           </div>
 
           {/* Recent Transactions Table */}
-          <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 overflow-x-auto">
-            <h3 className="text-lg sm:text-xl font-bold text-cafe-brown mb-4">Recent Transactions</h3>
+          <div className="bg-dark-surface border border-dark-border rounded-lg p-4 sm:p-6 overflow-x-auto">
+            <h3 className="text-lg sm:text-xl font-bold text-dark-text-primary mb-4">Recent Transactions</h3>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse min-w-[600px]">
                 <thead>
@@ -291,17 +291,17 @@ const ReportsPage = () => {
                 </thead>
                 <tbody>
                   {filteredTransactions.slice(0, 10).map((transaction) => (
-                    <tr key={transaction.id} className="border-b border-gray-200">
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">
+                    <tr key={transaction.id} className="border-b border-dark-border">
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-dark-text-primary">
                         {new Date(transaction.timestamp).toLocaleString('en-IN', {
                           dateStyle: 'short',
                           timeStyle: 'short',
                         })}
                       </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm">
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-dark-text-primary">
                         {transaction.items.length} item(s)
                       </td>
-                      <td className="text-right py-2 sm:py-3 px-2 sm:px-4 font-semibold text-xs sm:text-sm">
+                      <td className="text-right py-2 sm:py-3 px-2 sm:px-4 font-semibold text-xs sm:text-sm text-dark-text-primary">
                         ₹{transaction.grandTotal.toFixed(2)}
                       </td>
                     </tr>

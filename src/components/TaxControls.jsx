@@ -9,8 +9,8 @@ const TaxControls = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-4 sm:mb-6">
-      <h2 className="text-xl sm:text-2xl font-bold text-cafe-brown mb-3 sm:mb-4">Taxes & Charges</h2>
+    <div className="bg-dark-surface border border-dark-border rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
+      <h2 className="text-xl sm:text-2xl font-bold text-dark-text-primary mb-3 sm:mb-4">Taxes & Charges</h2>
       
       <div className="space-y-3 sm:space-y-4">
         {/* CGST */}
@@ -23,7 +23,7 @@ const TaxControls = () => {
               onChange={(e) => updateTaxSetting('cgstEnabled', e.target.checked)}
               className="w-4 h-4 sm:w-5 sm:h-5 text-cafe-brown focus:ring-cafe-brown"
             />
-            <label htmlFor="cgst" className="flex-1 sm:flex-none font-medium text-cafe-dark-brown text-sm sm:text-base">
+            <label htmlFor="cgst" className="flex-1 sm:flex-none font-medium text-dark-text-secondary text-sm sm:text-base">
               CGST (%)
             </label>
           </div>
@@ -34,7 +34,7 @@ const TaxControls = () => {
               min="0"
               value={taxSettings.cgstPercent}
               onChange={(e) => updateTaxSetting('cgstPercent', parseFloat(e.target.value) || 0)}
-              className="w-full sm:w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cafe-brown text-sm sm:text-base"
+              className="w-full sm:w-24 px-3 py-2 bg-dark-bg border border-dark-border rounded-lg focus:ring-2 focus:ring-cafe-brown focus:border-cafe-brown text-dark-text-primary text-sm sm:text-base"
               placeholder="0.00"
             />
           )}
@@ -50,7 +50,7 @@ const TaxControls = () => {
               onChange={(e) => updateTaxSetting('sgstEnabled', e.target.checked)}
               className="w-4 h-4 sm:w-5 sm:h-5 text-cafe-brown focus:ring-cafe-brown"
             />
-            <label htmlFor="sgst" className="flex-1 sm:flex-none font-medium text-cafe-dark-brown text-sm sm:text-base">
+            <label htmlFor="sgst" className="flex-1 sm:flex-none font-medium text-dark-text-secondary text-sm sm:text-base">
               SGST (%)
             </label>
           </div>
@@ -61,7 +61,7 @@ const TaxControls = () => {
               min="0"
               value={taxSettings.sgstPercent}
               onChange={(e) => updateTaxSetting('sgstPercent', parseFloat(e.target.value) || 0)}
-              className="w-full sm:w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cafe-brown text-sm sm:text-base"
+              className="w-full sm:w-24 px-3 py-2 bg-dark-bg border border-dark-border rounded-lg focus:ring-2 focus:ring-cafe-brown focus:border-cafe-brown text-dark-text-primary text-sm sm:text-base"
               placeholder="0.00"
             />
           )}
@@ -77,7 +77,7 @@ const TaxControls = () => {
               onChange={(e) => updateTaxSetting('serviceTaxEnabled', e.target.checked)}
               className="w-4 h-4 sm:w-5 sm:h-5 text-cafe-brown focus:ring-cafe-brown"
             />
-            <label htmlFor="serviceTax" className="flex-1 sm:flex-none font-medium text-cafe-dark-brown text-sm sm:text-base">
+            <label htmlFor="serviceTax" className="flex-1 sm:flex-none font-medium text-dark-text-secondary text-sm sm:text-base">
               Service Tax (%)
             </label>
           </div>
@@ -88,7 +88,7 @@ const TaxControls = () => {
               min="0"
               value={taxSettings.serviceTaxPercent}
               onChange={(e) => updateTaxSetting('serviceTaxPercent', parseFloat(e.target.value) || 0)}
-              className="w-full sm:w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cafe-brown text-sm sm:text-base"
+              className="w-full sm:w-24 px-3 py-2 bg-dark-bg border border-dark-border rounded-lg focus:ring-2 focus:ring-cafe-brown focus:border-cafe-brown text-dark-text-primary text-sm sm:text-base"
               placeholder="0.00"
             />
           )}
@@ -103,7 +103,7 @@ const TaxControls = () => {
             onChange={(e) => updateTaxSetting('packingEnabled', e.target.checked)}
             className="w-4 h-4 sm:w-5 sm:h-5 text-cafe-brown focus:ring-cafe-brown"
           />
-          <label htmlFor="packing" className="font-medium text-cafe-dark-brown text-xs sm:text-sm md:text-base">
+          <label htmlFor="packing" className="font-medium text-dark-text-secondary text-xs sm:text-sm md:text-base">
             Packing Charge (₹10 per item for takeaway)
           </label>
         </div>

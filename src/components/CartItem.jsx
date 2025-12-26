@@ -9,11 +9,11 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between animate-fade-in gap-3 sm:gap-0">
+    <div className="bg-dark-surface border border-dark-border rounded-lg p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between animate-fade-in gap-3 sm:gap-0">
       <div className="flex-1 w-full sm:w-auto">
-        <h3 className="text-base sm:text-lg font-semibold text-cafe-brown">{item.name}</h3>
-        <p className="text-xs sm:text-sm text-gray-500">{item.category}</p>
-        <p className="text-base sm:text-lg font-bold text-cafe-dark-brown mt-1 sm:mt-2">
+        <h3 className="text-base sm:text-lg font-semibold text-dark-text-primary">{item.name}</h3>
+        <p className="text-xs sm:text-sm text-dark-text-secondary">{item.category}</p>
+        <p className="text-base sm:text-lg font-bold text-dark-text-primary mt-1 sm:mt-2">
           ₹{item.price} × {item.quantity} = ₹{item.price * item.quantity}
         </p>
       </div>
@@ -21,21 +21,21 @@ const CartItem = ({ item }) => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => handleQuantityChange(-1)}
-            className="bg-white text-cafe-brown w-7 h-7 sm:w-8 sm:h-8 rounded-lg border-2 border-cafe-brown hover:bg-red-50 transition-colors duration-200 font-bold text-sm sm:text-base"
+            className="bg-dark-bg text-cafe-brown w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-cafe-brown hover:bg-dark-surface-elevated transition-colors duration-200 font-bold text-sm sm:text-base"
           >
             −
           </button>
-          <span className="text-lg sm:text-xl font-semibold w-6 sm:w-8 text-center">{item.quantity}</span>
+          <span className="text-lg sm:text-xl font-semibold w-6 sm:w-8 text-center text-dark-text-primary">{item.quantity}</span>
           <button
             onClick={() => handleQuantityChange(1)}
-            className="bg-white text-cafe-brown w-7 h-7 sm:w-8 sm:h-8 rounded-lg border-2 border-cafe-brown hover:bg-red-50 transition-colors duration-200 font-bold text-sm sm:text-base"
+            className="bg-dark-bg text-cafe-brown w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-cafe-brown hover:bg-dark-surface-elevated transition-colors duration-200 font-bold text-sm sm:text-base"
           >
             +
           </button>
         </div>
         <button
           onClick={() => removeFromCart(item.id)}
-          className="text-red-600 hover:text-red-800 text-lg sm:text-xl"
+          className="text-cafe-brown hover:text-cafe-pink text-lg sm:text-xl"
         >
           🗑️
         </button>

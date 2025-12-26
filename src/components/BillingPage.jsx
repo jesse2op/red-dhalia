@@ -105,10 +105,10 @@ const BillingPage = ({ setCurrentPage }) => {
   if (cart.length === 0) {
     return (
       <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cafe-brown mb-4 sm:mb-6">Generate Bill</h1>
-        <div className="text-center py-8 sm:py-12 bg-white rounded-lg shadow-md">
-          <p className="text-lg sm:text-xl text-gray-500 mb-4">Your cart is empty</p>
-          <p className="text-sm sm:text-base text-gray-500">Add items to cart to generate a bill</p>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-dark-text-primary mb-4 sm:mb-6">Generate Bill</h1>
+        <div className="text-center py-8 sm:py-12 bg-dark-surface border border-dark-border rounded-lg">
+          <p className="text-lg sm:text-xl text-dark-text-secondary mb-4">Your cart is empty</p>
+          <p className="text-sm sm:text-base text-dark-text-secondary">Add items to cart to generate a bill</p>
         </div>
       </div>
     );
@@ -126,11 +126,13 @@ const BillingPage = ({ setCurrentPage }) => {
 
   return (
     <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cafe-brown mb-4 sm:mb-6">Generate Bill</h1>
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-dark-text-primary mb-4 sm:mb-6 print-hidden">Generate Bill</h1>
 
-      <TaxControls />
+      <div className="print-hidden">
+        <TaxControls />
+      </div>
 
-      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 print:shadow-none" ref={billRef}>
+      <div className="bg-white text-gray-900 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 print:shadow-none print:bg-white bill-container" ref={billRef}>
         {/* Bill Header */}
         <div className="text-center mb-6 sm:mb-8 border-b-2 border-cafe-brown pb-3 sm:pb-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cafe-brown mb-2">🌺 Red Dhalia</h1>
@@ -156,13 +158,13 @@ const BillingPage = ({ setCurrentPage }) => {
                 <tr key={item.id} className="border-b border-gray-200">
                   <td className="py-2 sm:py-3 px-2 sm:px-4">
                     <div>
-                      <div className="font-medium text-cafe-dark-brown text-sm sm:text-base">{item.name}</div>
+                      <div className="font-medium text-gray-900 text-sm sm:text-base">{item.name}</div>
                       <div className="text-xs sm:text-sm text-gray-500">{item.category}</div>
                     </div>
                   </td>
-                  <td className="text-center py-2 sm:py-3 px-2 sm:px-4 text-sm sm:text-base">{item.quantity}</td>
-                  <td className="text-right py-2 sm:py-3 px-2 sm:px-4 text-sm sm:text-base">₹{item.price.toFixed(2)}</td>
-                  <td className="text-right py-2 sm:py-3 px-2 sm:px-4 font-semibold text-sm sm:text-base">
+                  <td className="text-center py-2 sm:py-3 px-2 sm:px-4 text-gray-900 text-sm sm:text-base">{item.quantity}</td>
+                  <td className="text-right py-2 sm:py-3 px-2 sm:px-4 text-gray-900 text-sm sm:text-base">₹{item.price.toFixed(2)}</td>
+                  <td className="text-right py-2 sm:py-3 px-2 sm:px-4 font-semibold text-gray-900 text-sm sm:text-base">
                     ₹{(item.price * item.quantity).toFixed(2)}
                   </td>
                 </tr>
@@ -176,7 +178,7 @@ const BillingPage = ({ setCurrentPage }) => {
           <div className="space-y-2 mb-4">
             <div className="flex justify-between">
               <span className="text-gray-600">Subtotal:</span>
-              <span className="font-semibold">₹{subtotal.toFixed(2)}</span>
+              <span className="font-semibold text-gray-900">₹{subtotal.toFixed(2)}</span>
             </div>
 
             {taxSettings.cgstEnabled && taxes.cgst.amount > 0 && (
@@ -184,7 +186,7 @@ const BillingPage = ({ setCurrentPage }) => {
                 <span className="text-gray-600">
                   CGST ({taxes.cgst.percent}%):
                 </span>
-                <span className="font-semibold">₹{taxes.cgst.amount.toFixed(2)}</span>
+                <span className="font-semibold text-gray-900">₹{taxes.cgst.amount.toFixed(2)}</span>
               </div>
             )}
 
@@ -193,7 +195,7 @@ const BillingPage = ({ setCurrentPage }) => {
                 <span className="text-gray-600">
                   SGST ({taxes.sgst.percent}%):
                 </span>
-                <span className="font-semibold">₹{taxes.sgst.amount.toFixed(2)}</span>
+                <span className="font-semibold text-gray-900">₹{taxes.sgst.amount.toFixed(2)}</span>
               </div>
             )}
 
@@ -202,20 +204,20 @@ const BillingPage = ({ setCurrentPage }) => {
                 <span className="text-gray-600">
                   Service Tax ({taxes.serviceTax.percent}%):
                 </span>
-                <span className="font-semibold">₹{taxes.serviceTax.amount.toFixed(2)}</span>
+                <span className="font-semibold text-gray-900">₹{taxes.serviceTax.amount.toFixed(2)}</span>
               </div>
             )}
 
             {taxSettings.packingEnabled && packingCharges > 0 && (
               <div className="flex justify-between">
                 <span className="text-gray-600">Packing Charges:</span>
-                <span className="font-semibold">₹{packingCharges.toFixed(2)}</span>
+                <span className="font-semibold text-gray-900">₹{packingCharges.toFixed(2)}</span>
               </div>
             )}
           </div>
 
           <div className="border-t-2 border-cafe-brown pt-3 sm:pt-4 mt-3 sm:mt-4">
-            <div className="flex justify-between text-lg sm:text-xl md:text-2xl font-bold text-cafe-dark-brown">
+            <div className="flex justify-between text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
               <span className="text-sm sm:text-base md:text-lg lg:text-xl">Total Amount Payable:</span>
               <span>₹{grandTotal.toFixed(2)}</span>
             </div>

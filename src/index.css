@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply bg-white text-cafe-dark-brown;
+    background-color: #121212;
+    color: #FFFFFF;
     font-family: 'Georgia', 'Times New Roman', serif;
   }
 }
@@ -53,11 +54,29 @@
   }
   
   body {
-    background: white;
+    background: white !important;
   }
   
+  /* Hide navigation and other UI elements */
+  nav,
+  header,
   .print-hidden {
     display: none !important;
+  }
+  
+  /* Hide container padding/margins and show only bill */
+  .container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Show only the bill container */
+  .bill-container {
+    display: block !important;
+    margin: 0 !important;
+    padding: 1cm !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 }
 
